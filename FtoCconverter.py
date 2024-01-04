@@ -1,31 +1,26 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Nov 17 03:17:18 2021
+Created on Thu Jan  4 16:48:55 2024
 
-@author: patrick
+@author: patri
 """
+# Fahrenheit to Celsius converter
+while True:
+    try:
+        # This tries to store the given input as a float, and if it isn't a number, it moves to the exception statement.
+        fahrenheit = float(input("Type the Fahrenheit temperature you would like to be converted to Celsius: "))
+        celsius = (fahrenheit - 32) * 5 / 9
+        print(f"{fahrenheit} degrees Fahrenheit is about: {round(celsius)} degrees Celsius!\n")  # Rounding Celsius for readability
 
-#Fahrenheit to Celsius converter
-running = True
+        user_input = input("Would you like to convert another temperature? Type Y for yes or N for no: ").upper()
 
-while running == True:
-    try: #This trys to store the given input as a float and if the given input isn't a number then it moves to the exception statement.
-        F = float(input("Type the Fahrenheit temperature you would like to be converted to Celsius: "))
-        C = ((F - 32) * 5) / 9
-        print()
-        print(F, "degrees Fahrenheit is about:", round(C), "degrees Celsius!\n") #The rounding of Celsius here is because no one likes decimal temps.
-        x = input("Would you like to convert another temperature? Type Y for yes or N for no: ")
-        
-        if x.upper() == "Y":
-            pass
-        elif x.upper() == "N":
+        if user_input == "N":
             break
-        else: 
-           y = input("Enter 'Y' to continue or 'N' to stop: ") #This line gives the user another chance to follow the given directions.
-           if y.upper() == "Y":
-                pass
-           else: 
-                break #If the user inputs something other than Y/y or N/n AGAIN then the code will just break.
-        
-    except ValueError: #ValueError is something I just learned you can call in case the 'Try' code fails to actualize. Nifty!
+        elif user_input != "Y":
+            # Giving the user another chance to follow the given directions.
+            user_input = input("Enter 'Y' to continue or 'N' to stop: ").upper()
+            if user_input != "Y":
+                break  # If the user inputs something other than Y/y or N/n AGAIN, the code will just break.
+
+    except ValueError:  # ValueError is raised if the 'Try' code fails to convert the input to a float.
         print("Please enter a number")
